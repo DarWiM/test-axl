@@ -1,20 +1,28 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+import { StyleSheet, View } from 'react-native';
+import React from 'react';
+import { AuthContextProvider } from './src/context/AuthContext';
+import NavigationRoot from './src/components/NavigationRoot';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
 });
+
+const App = () => (
+  <AuthContextProvider>
+    <View style={styles.container}>
+
+      {/* eslint-disable-next-line react/style-prop-object */}
+      <StatusBar style="auto" />
+
+      <NavigationRoot />
+
+    </View>
+  </AuthContextProvider>
+);
+
+// noinspection JSUnusedGlobalSymbols
+export default App;
